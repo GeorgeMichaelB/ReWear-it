@@ -1,33 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import Layout from './components/Layout';
+import Slider from './components/Slider';
+import HomeContent from './components/HomeContent';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [swaps, setSwaps] = useState([]);
 
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/message')
-      .then(response => response.json())
-      .then(json => setData(json.text))
-      .catch(err => console.error("Connection failed:", err));
-  }, []);
+  const addToSwaps = (item) => {
+    setSwaps([...swaps, { ...item, id: Date.now() }]);
+    // Simple alert for feedback
+    alert(`${item.name} added to your Swap Basket!`);
+  };
+
+  const removeFromSwaps = (id) => {
+    setSwaps(swaps.filter(item => item.id !== id));
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Backend Status:</h1>
-        <p>{data ? data : "Loading..."}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout swaps={swaps} removeFromSwaps={removeFromSwaps}>
+      <Slider addToSwaps={addToSwaps} />
+      <div className="main">
+        <div className="container">
+          <HomeContent addToSwaps={addToSwaps} />
+        </div>
+      </div>
+      
+      {/* BEGIN BRANDS */}
+      <div className="brands">
+        <div className="container">
+          <div className="owl-carousel owl-carousel6-brands">
+            <a href="#"><img src="/assets/pages/img/brands/canon.jpg" alt="canon" title="canon" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/esprit.jpg" alt="esprit" title="esprit" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/gap.jpg" alt="gap" title="gap" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/next.jpg" alt="next" title="next" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/puma.jpg" alt="puma" title="puma" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/zara.jpg" alt="zara" title="zara" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/canon.jpg" alt="canon" title="canon" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/esprit.jpg" alt="esprit" title="esprit" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/gap.jpg" alt="gap" title="gap" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/next.jpg" alt="next" title="next" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/puma.jpg" alt="puma" title="puma" /></a>
+            <a href="#"><img src="/assets/pages/img/brands/zara.jpg" alt="zara" title="zara" /></a>
+          </div>
+        </div>
+      </div>
+      {/* END BRANDS */}
+    </Layout>
   );
 }
 
