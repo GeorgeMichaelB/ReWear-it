@@ -5,42 +5,42 @@ const Header = ({ swaps, removeFromSwaps }) => {
     <>
       {/* BEGIN TOP BAR */}
       <div className="pre-header">
-          <div className="container">
-              <div className="row">
-                  {/* BEGIN TOP BAR LEFT PART */}
-                  <div className="col-md-6 col-sm-6 additional-shop-info">
-                      <ul className="list-unstyled list-inline">
-                          <li><i className="fa fa-phone"></i><span>+1 456 6717</span></li>
-                          {/* BEGIN SWITCH INFO */}
-                          <li className="shop-currencies">
-                              <span className="current">SWAP MODE</span>
-                          </li>
-                          {/* END SWITCH INFO */}
-                          {/* BEGIN LANGS */}
-                          <li className="langs-block">
-                              <a href="javascript:void(0);" className="current">English </a>
-                              <div className="langs-block-others-wrapper"><div className="langs-block-others">
-                                <a href="javascript:void(0);">French</a>
-                                <a href="javascript:void(0);">Germany</a>
-                                <a href="javascript:void(0);">Turkish</a>
-                              </div></div>
-                          </li>
-                          {/* END LANGS */}
-                      </ul>
-                  </div>
-                  {/* END TOP BAR LEFT PART */}
-                  {/* BEGIN TOP BAR MENU */}
-                  <div className="col-md-6 col-sm-6 additional-nav">
-                      <ul className="list-unstyled list-inline pull-right">
-                          <li><a href="#">My Profile</a></li>
-                          <li><a href="#">Saved Items</a></li>
-                          <li><a href="#">Confirm Swaps</a></li>
-                          <li><a href="#">Log In</a></li>
-                      </ul>
-                  </div>
-                  {/* END TOP BAR MENU */}
-              </div>
-          </div>        
+        <div className="container">
+          <div className="row">
+            {/* BEGIN TOP BAR LEFT PART */}
+            <div className="col-md-6 col-sm-6 additional-shop-info">
+              <ul className="list-unstyled list-inline">
+                <li><i className="fa fa-phone"></i><span>+20 123 456 7890</span></li>
+                {/* BEGIN SWITCH INFO */}
+                <li className="shop-currencies">
+                  <span className="current">SWAP MODE</span>
+                </li>
+                {/* END SWITCH INFO */}
+                {/* BEGIN LANGS */}
+                <li className="langs-block">
+                  <a href="javascript:void(0);" className="current">English </a>
+                  <div className="langs-block-others-wrapper"><div className="langs-block-others">
+                    <a href="javascript:void(0);">Arabic</a>
+                  </div></div>
+                </li>
+                {/* END LANGS */}
+              </ul>
+            </div>
+            {/* END TOP BAR LEFT PART */}
+            {/* BEGIN TOP BAR MENU */}
+            <div className="col-md-6 col-sm-6 additional-nav">
+              <ul className="list-unstyled list-inline pull-right">
+                <li><a href="/shop-account.html">My Profile</a></li>
+                <li><a href="/shop-wishlist.html">Saved Items</a></li>
+                <li><a href="/shop-checkout.html">Confirm Swaps</a></li>
+                <li><a href="/shop-account.html">Log In</a></li>
+                <li><a href="/services.html">Sign Up</a></li>
+                <li><a href="/shop-services.html">Extra Services</a></li>
+              </ul>
+            </div>
+            {/* END TOP BAR MENU */}
+          </div>
+        </div>
       </div>
       {/* END TOP BAR */}
 
@@ -58,12 +58,12 @@ const Header = ({ swaps, removeFromSwaps }) => {
               <a href="javascript:void(0);" className="top-cart-info-value">To Swap</a>
             </div>
             <i className="fa fa-refresh"></i>
-                          
+
             <div className="top-cart-content-wrapper">
               <div className="top-cart-content">
-                <ul className="scroller" style={{height: '250px'}}>
+                <ul className="scroller" style={{ height: '250px' }}>
                   {swaps.length === 0 ? (
-                    <li style={{padding: '20px', textAlign: 'center'}}>Your basket is empty</li>
+                    <li style={{ padding: '20px', textAlign: 'center' }}>Your basket is empty</li>
                   ) : (
                     swaps.map((item) => (
                       <li key={item.id}>
@@ -71,9 +71,9 @@ const Header = ({ swaps, removeFromSwaps }) => {
                         <span className="cart-content-count">x 1</span>
                         <strong><a href="#">{item.name}</a></strong>
                         <em>{item.value}</em>
-                        <a 
-                          href="javascript:void(0);" 
-                          className="del-goods" 
+                        <a
+                          href="javascript:void(0);"
+                          className="del-goods"
                           onClick={() => removeFromSwaps(item.id)}
                         >&nbsp;</a>
                       </li>
@@ -81,17 +81,11 @@ const Header = ({ swaps, removeFromSwaps }) => {
                   )}
                 </ul>
                 <div className="text-right">
-                  <a href="javascript:;" className="btn btn-default" onClick={() => alert(`You have ${swaps.length} items in your basket.`)}>View Swaps</a>
-                  <a href="javascript:;" className="btn btn-primary" onClick={() => {
-                    if (swaps.length > 0) {
-                      alert('Redirecting to secure exchange gateway...');
-                    } else {
-                      alert('Your basket is empty. Add some items first!');
-                    }
-                  }}>Exchange Now</a>
+                  <a href="/shop-shopping-cart.html" className="btn btn-default">View Swaps</a>
+                  <a href="/shop-checkout.html" className="btn btn-primary">Exchange Now</a>
                 </div>
               </div>
-            </div>            
+            </div>
           </div>
           {/* END SWAP BASKET */}
 
@@ -100,31 +94,31 @@ const Header = ({ swaps, removeFromSwaps }) => {
             <ul>
               <li className="dropdown">
                 <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                  Woman 
+                  Woman
                 </a>
-                  
+
                 {/* BEGIN DROPDOWN MENU */}
                 <ul className="dropdown-menu">
                   <li className="dropdown-submenu">
-                    <a href="#">Hi Tops <i className="fa fa-angle-right"></i></a>
+                    <a href="/shop-product-list.html">Hi Tops <i className="fa fa-angle-right"></i></a>
                     <ul className="dropdown-menu" role="menu">
-                      <li><a href="#">Second Level Link</a></li>
-                      <li><a href="#">Second Level Link</a></li>
+                      <li><a href="/shop-product-list.html">Second Level Link</a></li>
+                      <li><a href="/shop-product-list.html">Second Level Link</a></li>
                       <li className="dropdown-submenu">
                         <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                          Second Level Link 
+                          Second Level Link
                           <i className="fa fa-angle-right"></i>
                         </a>
                         <ul className="dropdown-menu">
-                          <li><a href="#">Third Level Link</a></li>
-                          <li><a href="#">Third Level Link</a></li>
-                          <li><a href="#">Third Level Link</a></li>
+                          <li><a href="/shop-product-list.html">Third Level Link</a></li>
+                          <li><a href="/shop-product-list.html">Third Level Link</a></li>
+                          <li><a href="/shop-product-list.html">Third Level Link</a></li>
                         </ul>
                       </li>
                     </ul>
                   </li>
-                  <li><a href="#">Running Shoes</a></li>
-                  <li><a href="#">Jackets and Coats</a></li>
+                  <li><a href="/shop-product-list.html">Running Shoes</a></li>
+                  <li><a href="/shop-product-list.html">Jackets and Coats</a></li>
                 </ul>
                 {/* END DROPDOWN MENU */}
               </li>
@@ -139,50 +133,50 @@ const Header = ({ swaps, removeFromSwaps }) => {
                         <div className="col-md-4 header-navigation-col">
                           <h4>Footwear</h4>
                           <ul>
-                            <li><a href="#">Astro Trainers</a></li>
-                            <li><a href="#">Basketball Shoes</a></li>
-                            <li><a href="#">Boots</a></li>
-                            <li><a href="#">Canvas Shoes</a></li>
-                            <li><a href="#">Football Boots</a></li>
-                            <li><a href="#">Golf Shoes</a></li>
-                            <li><a href="#">Hi Tops</a></li>
-                            <li><a href="#">Indoor and Court Trainers</a></li>
+                            <li><a href="/shop-product-list.html">Astro Trainers</a></li>
+                            <li><a href="/shop-product-list.html">Basketball Shoes</a></li>
+                            <li><a href="/shop-product-list.html">Boots</a></li>
+                            <li><a href="/shop-product-list.html">Canvas Shoes</a></li>
+                            <li><a href="/shop-product-list.html">Football Boots</a></li>
+                            <li><a href="/shop-product-list.html">Golf Shoes</a></li>
+                            <li><a href="/shop-product-list.html">Hi Tops</a></li>
+                            <li><a href="/shop-product-list.html">Indoor and Court Trainers</a></li>
                           </ul>
                         </div>
                         <div className="col-md-4 header-navigation-col">
                           <h4>Clothing</h4>
                           <ul>
-                            <li><a href="#">Base Layer</a></li>
-                            <li><a href="#">Character</a></li>
-                            <li><a href="#">Chinos</a></li>
-                            <li><a href="#">Combats</a></li>
-                            <li><a href="#">Cricket Clothing</a></li>
-                            <li><a href="#">Fleeces</a></li>
-                            <li><a href="#">Gilets</a></li>
-                            <li><a href="#">Golf Tops</a></li>
+                            <li><a href="/shop-product-list.html">Base Layer</a></li>
+                            <li><a href="/shop-product-list.html">Character</a></li>
+                            <li><a href="/shop-product-list.html">Chinos</a></li>
+                            <li><a href="/shop-product-list.html">Combats</a></li>
+                            <li><a href="/shop-product-list.html">Cricket Clothing</a></li>
+                            <li><a href="/shop-product-list.html">Fleeces</a></li>
+                            <li><a href="/shop-product-list.html">Gilets</a></li>
+                            <li><a href="/shop-product-list.html">Golf Tops</a></li>
                           </ul>
                         </div>
                         <div className="col-md-4 header-navigation-col">
                           <h4>Accessories</h4>
                           <ul>
-                            <li><a href="#">Belts</a></li>
-                            <li><a href="#">Caps</a></li>
-                            <li><a href="#">Gloves, Hats and Scarves</a></li>
+                            <li><a href="/shop-product-list.html">Belts</a></li>
+                            <li><a href="/shop-product-list.html">Caps</a></li>
+                            <li><a href="/shop-product-list.html">Gloves, Hats and Scarves</a></li>
                           </ul>
 
                           <h4>Clearance</h4>
                           <ul>
-                            <li><a href="#">Jackets</a></li>
-                            <li><a href="#">Bottoms</a></li>
+                            <li><a href="/shop-product-list.html">Jackets</a></li>
+                            <li><a href="/shop-product-list.html">Bottoms</a></li>
                           </ul>
                         </div>
                         <div className="col-md-12 nav-brands">
                           <ul>
-                            <li><a href="#"><img title="esprit" alt="esprit" src="/assets/pages/img/brands/esprit.jpg" /></a></li>
-                            <li><a href="#"><img title="gap" alt="gap" src="/assets/pages/img/brands/gap.jpg" /></a></li>
-                            <li><a href="#"><img title="next" alt="next" src="/assets/pages/img/brands/next.jpg" /></a></li>
-                            <li><a href="#"><img title="puma" alt="puma" src="/assets/pages/img/brands/puma.jpg" /></a></li>
-                            <li><a href="#"><img title="zara" alt="zara" src="/assets/pages/img/brands/zara.jpg" /></a></li>
+                            <li><a href="/shop-product-list.html"><img title="esprit" alt="esprit" src="/assets/pages/img/brands/esprit.jpg" /></a></li>
+                            <li><a href="/shop-product-list.html"><img title="gap" alt="gap" src="/assets/pages/img/brands/gap.jpg" /></a></li>
+                            <li><a href="/shop-product-list.html"><img title="next" alt="next" src="/assets/pages/img/brands/next.jpg" /></a></li>
+                            <li><a href="/shop-product-list.html"><img title="puma" alt="puma" src="/assets/pages/img/brands/puma.jpg" /></a></li>
+                            <li><a href="/shop-product-list.html"><img title="zara" alt="zara" src="/assets/pages/img/brands/zara.jpg" /></a></li>
                           </ul>
                         </div>
                       </div>
@@ -190,7 +184,7 @@ const Header = ({ swaps, removeFromSwaps }) => {
                   </li>
                 </ul>
               </li>
-              <li><a href="#">Kids</a></li>
+              <li><a href="/shop-product-list.html">Kids</a></li>
               <li className="dropdown dropdown100 nav-catalogue">
                 <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
                   New
@@ -202,41 +196,41 @@ const Header = ({ swaps, removeFromSwaps }) => {
                         <div className="col-md-3 col-sm-4 col-xs-6">
                           <div className="product-item">
                             <div className="pi-img-wrapper">
-                              <a href="#"><img src="/assets/pages/img/products/model4.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
+                              <a href="/shop-item.html"><img src="/assets/pages/img/products/model4.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
                             </div>
-                            <h3><a href="#">Berry Lace Dress</a></h3>
+                            <h3><a href="/shop-item.html">Berry Lace Dress</a></h3>
                             <div className="pi-price">Swap Value: ★★★★☆</div>
-                            <a href="javascript:;" className="btn btn-default add2cart">Switch Now</a>
+                            <a href="/shop-item.html" className="btn btn-default add2cart">Switch Now</a>
                           </div>
                         </div>
                         <div className="col-md-3 col-sm-4 col-xs-6">
                           <div className="product-item">
                             <div className="pi-img-wrapper">
-                              <a href="#"><img src="/assets/pages/img/products/model3.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
+                              <a href="/shop-item.html"><img src="/assets/pages/img/products/model3.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
                             </div>
-                            <h3><a href="#">Berry Lace Dress</a></h3>
+                            <h3><a href="/shop-item.html">Berry Lace Dress</a></h3>
                             <div className="pi-price">Swap Value: ★★★★☆</div>
-                            <a href="javascript:;" className="btn btn-default add2cart">Switch Now</a>
+                            <a href="/shop-item.html" className="btn btn-default add2cart">Switch Now</a>
                           </div>
                         </div>
                         <div className="col-md-3 col-sm-4 col-xs-6">
                           <div className="product-item">
                             <div className="pi-img-wrapper">
-                              <a href="#"><img src="/assets/pages/img/products/model7.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
+                              <a href="/shop-item.html"><img src="/assets/pages/img/products/model7.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
                             </div>
-                            <h3><a href="#">Berry Lace Dress</a></h3>
+                            <h3><a href="/shop-item.html">Berry Lace Dress</a></h3>
                             <div className="pi-price">Swap Value: ★★★★☆</div>
-                            <a href="javascript:;" className="btn btn-default add2cart">Switch Now</a>
+                            <a href="/shop-item.html" className="btn btn-default add2cart">Switch Now</a>
                           </div>
                         </div>
                         <div className="col-md-3 col-sm-4 col-xs-6">
                           <div className="product-item">
                             <div className="pi-img-wrapper">
-                              <a href="#"><img src="/assets/pages/img/products/model4.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
+                              <a href="/shop-item.html"><img src="/assets/pages/img/products/model4.jpg" className="img-responsive" alt="Berry Lace Dress" /></a>
                             </div>
-                            <h3><a href="#">Berry Lace Dress</a></h3>
+                            <h3><a href="/shop-item.html">Berry Lace Dress</a></h3>
                             <div className="pi-price">Swap Value: ★★★★☆</div>
-                            <a href="javascript:;" className="btn btn-default add2cart">Switch Now</a>
+                            <a href="/shop-item.html" className="btn btn-default add2cart">Switch Now</a>
                           </div>
                         </div>
                       </div>
@@ -246,30 +240,28 @@ const Header = ({ swaps, removeFromSwaps }) => {
               </li>
               <li className="dropdown">
                 <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                  Pages 
+                  Pages
                 </a>
-                  
+
                 <ul className="dropdown-menu">
-                  <li className="active"><a href="/">Home Default</a></li>
-                  <li><a href="#">Product List</a></li>
-                  <li><a href="#">Search Result</a></li>
-                  <li><a href="#">Product Page</a></li>
-                  <li><a href="#">My Swaps (Empty)</a></li>
-                  <li><a href="#">My Swap Basket</a></li>
-                  <li><a href="#">Confirm Swaps</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Contacts</a></li>
-                  <li><a href="#">My account</a></li>
-                  <li><a href="#">My Wish List</a></li>
-                  <li><a href="#">Product Comparison</a></li>
-                  <li><a href="#">Standart Forms</a></li>
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms &amp; Conditions</a></li>
+                  <li className="active"><a href="/">Home</a></li>
+                  <li><a href="/shop-product-list.html">Product List</a></li>
+                  <li><a href="/shop-search-result.html">Search Result</a></li>
+                  <li><a href="/shop-item.html">Product Page</a></li>
+                  <li><a href="/shop-shopping-cart-null.html">My Swaps (Empty)</a></li>
+                  <li><a href="/shop-shopping-cart.html">My Swap Basket</a></li>
+                  <li><a href="/shop-checkout.html">Confirm Swaps</a></li>
+                  <li><a href="/shop-about.html">About</a></li>
+                  <li><a href="/shop-contacts.html">Contacts</a></li>
+                  <li><a href="/shop-account.html">My Account</a></li>
+                  <li><a href="/shop-wishlist.html">My Wish List</a></li>
+                  <li><a href="/shop-goods-compare.html">Product Comparison</a></li>
+                  <li><a href="/shop-standart-forms.html">Standard Forms</a></li>
+                  <li><a href="/shop-faq.html">FAQ</a></li>
+                  <li><a href="/shop-privacy-policy.html">Privacy Policy</a></li>
+                  <li><a href="/shop-terms-conditions-page.html">Terms &amp; Conditions</a></li>
                 </ul>
               </li>
-              
-              <li><a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes&amp;utm_source=download&amp;utm_medium=banner&amp;utm_campaign=metronic_frontend_freebie" target="_blank" rel="noreferrer">Admin theme</a></li>
 
               {/* BEGIN TOP SEARCH */}
               <li className="menu-search">
@@ -284,7 +276,7 @@ const Header = ({ swaps, removeFromSwaps }) => {
                       </span>
                     </div>
                   </form>
-                </div> 
+                </div>
               </li>
               {/* END TOP SEARCH */}
             </ul>
