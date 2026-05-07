@@ -74,7 +74,7 @@ const Slider = ({ addToSwaps }) => {
                                 </h2>
                                 <a 
                                   className="carousel-btn" 
-                                  href="javascript:;" 
+                                  href="#" 
                                   data-animation="animated fadeInUp"
                                   onClick={() => addToSwaps({ name: 'Luxury Bijouterie', img: '/assets/pages/img/products/model4.jpg', value: 'Swap Value: ★★★★★' })}
                                 >Swap It Now!</a>

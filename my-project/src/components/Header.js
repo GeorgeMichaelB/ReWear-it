@@ -1,6 +1,16 @@
 import React from 'react';
+import { useAuth } from '../context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = ({ swaps, removeFromSwaps }) => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <>
       {/* BEGIN TOP BAR */}
@@ -18,9 +28,9 @@ const Header = ({ swaps, removeFromSwaps }) => {
                 {/* END SWITCH INFO */}
                 {/* BEGIN LANGS */}
                 <li className="langs-block">
-                  <a href="javascript:void(0);" className="current">English </a>
+                  <a href="#" className="current">English </a>
                   <div className="langs-block-others-wrapper"><div className="langs-block-others">
-                    <a href="javascript:void(0);">Arabic</a>
+                    <a href="#">Arabic</a>
                   </div></div>
                 </li>
                 {/* END LANGS */}
@@ -30,12 +40,20 @@ const Header = ({ swaps, removeFromSwaps }) => {
             {/* BEGIN TOP BAR MENU */}
             <div className="col-md-6 col-sm-6 additional-nav">
               <ul className="list-unstyled list-inline pull-right">
-                <li><a href="/shop-account.html">My Profile</a></li>
-                <li><a href="/shop-wishlist.html">Saved Items</a></li>
-                <li><a href="/shop-checkout.html">Confirm Swaps</a></li>
-                <li><a href="/shop-account.html">Log In</a></li>
-                <li><a href="/services.html">Sign Up</a></li>
-                <li><a href="/shop-services.html">Extra Services</a></li>
+                {user ? (
+                  <>
+                    <li><span className="text-success">Welcome, {user.name}!</span></li>
+                    <li><Link to="/account">My Profile</Link></li>
+                    <li><Link to="/products">Saved Items</Link></li>
+                    <li><Link to="/products">Confirm Swaps</Link></li>
+                    <li><a href="#" onClick={handleLogout}>Log Out</a></li>
+                  </>
+                ) : (
+                  <>
+                    <li><Link to="/login">Log In</Link></li>
+                    <li><Link to="/register">Sign Up</Link></li>
+                  </>
+                )}
               </ul>
             </div>
             {/* END TOP BAR MENU */}
@@ -49,13 +67,13 @@ const Header = ({ swaps, removeFromSwaps }) => {
         <div className="container">
           <a className="site-logo" href="/"><img src="/assets/corporate/img/logos/logo-shop-red.png" alt="ReWear-it Swap" /></a>
 
-          <a href="javascript:void(0);" className="mobi-toggler"><i className="fa fa-bars"></i></a>
+          <a href="#" className="mobi-toggler"><i className="fa fa-bars"></i></a>
 
           {/* BEGIN SWAP BASKET */}
           <div className="top-cart-block">
             <div className="top-cart-info">
-              <a href="javascript:void(0);" className="top-cart-info-count">{swaps.length} items</a>
-              <a href="javascript:void(0);" className="top-cart-info-value">To Swap</a>
+              <a href="#" className="top-cart-info-count">{swaps.length} items</a>
+              <a href="#" className="top-cart-info-value">To Swap</a>
             </div>
             <i className="fa fa-refresh"></i>
 
@@ -72,7 +90,7 @@ const Header = ({ swaps, removeFromSwaps }) => {
                         <strong><a href="#">{item.name}</a></strong>
                         <em>{item.value}</em>
                         <a
-                          href="javascript:void(0);"
+                          href="#"
                           className="del-goods"
                           onClick={() => removeFromSwaps(item.id)}
                         >&nbsp;</a>
@@ -92,8 +110,9 @@ const Header = ({ swaps, removeFromSwaps }) => {
           {/* BEGIN NAVIGATION */}
           <div className="header-navigation">
             <ul>
+              <li><Link to="/products">Browse Items</Link></li>
               <li className="dropdown">
-                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                   Woman
                 </a>
 
@@ -105,7 +124,7 @@ const Header = ({ swaps, removeFromSwaps }) => {
                       <li><a href="/shop-product-list.html">Second Level Link</a></li>
                       <li><a href="/shop-product-list.html">Second Level Link</a></li>
                       <li className="dropdown-submenu">
-                        <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                        <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                           Second Level Link
                           <i className="fa fa-angle-right"></i>
                         </a>
@@ -123,7 +142,7 @@ const Header = ({ swaps, removeFromSwaps }) => {
                 {/* END DROPDOWN MENU */}
               </li>
               <li className="dropdown dropdown-megamenu">
-                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                   Man
                 </a>
                 <ul className="dropdown-menu">
@@ -186,7 +205,7 @@ const Header = ({ swaps, removeFromSwaps }) => {
               </li>
               <li><a href="/shop-product-list.html">Kids</a></li>
               <li className="dropdown dropdown100 nav-catalogue">
-                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                   New
                 </a>
                 <ul className="dropdown-menu">
@@ -239,7 +258,7 @@ const Header = ({ swaps, removeFromSwaps }) => {
                 </ul>
               </li>
               <li className="dropdown">
-                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                <a className="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                   Pages
                 </a>
 
