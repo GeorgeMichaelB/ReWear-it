@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Database
   mysql:
@@ -47,6 +45,11 @@ services:
       - "8000:8000"
     volumes:
       - ./backend-api:/var/www/html
+    command: >
+      sh -c "
+        php artisan migrate:fresh --force --seed &&
+        php artisan serve --host=0.0.0.0 --port=8000
+      "
 
   # Frontend (React)
   frontend:
