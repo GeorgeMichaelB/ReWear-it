@@ -13,16 +13,19 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
-        'avatar',
-        'phone',
-        'trust_score',
-        'eco_credits',
-        'preferred_currency',
+protected $fillable = [
+        'name', 'email', 'password', 'role', 'avatar', 'phone',
+        'trust_score', 'eco_credits', 'preferred_currency',
+        'size', 'aesthetic_preference', 'upcycle_intensity',
+        'is_pro_upcycler', 'pro_upcycler_badges', 'eco_verified',
+    ];
+
+    protected $casts = [
+        'trust_score' => 'float',
+        'eco_credits' => 'integer',
+        'is_pro_upcycler' => 'boolean',
+        'eco_verified' => 'boolean',
+        'pro_upcycler_badges' => 'array',
     ];
 
     protected $hidden = [

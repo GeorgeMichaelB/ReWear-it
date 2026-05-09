@@ -1,0 +1,151 @@
+.eco-credits-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-bottom: 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.eco-credits-page h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.credits-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+  color: var(--primary-contrast);
+  padding: 3rem 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.current-credits .label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.9;
+  color:white;
+}
+
+.current-credits .value {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.current-credits .unit {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.credits-history {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.credits-history h3 {
+  margin: 0 0 1.5rem 0;
+  color: var(--text-main);
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item:hover {
+  background: var(--bg-alt);
+  border-radius: var(--radius-md);
+}
+
+.history-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.reason {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.amount {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.amount.earned {
+  color: var(--success);
+}
+
+.amount.spent {
+  color: var(--error);
+}
+
+.credits-info {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.credits-info h3 {
+  margin: 0 0 1rem 0;
+  color: var(--text-main);
+}
+
+.credits-info ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.credits-info li {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.credits-info li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .current-credits .value {
+    font-size: 3rem;
+  }
+}

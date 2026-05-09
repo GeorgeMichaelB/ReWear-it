@@ -1,0 +1,128 @@
+.swap-history-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+.swap-history-page h2 {
+  margin: 0;
+}
+
+.no-swaps {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+}
+
+.swaps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.swap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.swap-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.swap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.swap-id {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.swap-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-completed {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--success);
+}
+
+.status-pending {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.status-cancelled {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+}
+
+.swap-items, .swap-date {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.items, .date {
+  color: var(--text-main);
+  font-weight: 400;
+}
+
+.swap-card button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.swap-card button:hover {
+  background: var(--bg-alt);
+}
+
+.swap-card .btn-secondary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-color: var(--primary);
+}
+
+.swap-card .btn-secondary:hover {
+  background: var(--primary-hover);
+}
+
+.swap-card .btn-danger {
+  color: var(--error);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.swap-card .btn-danger:hover {
+  background: var(--error);
+  color: white;
+}

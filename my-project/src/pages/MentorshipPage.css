@@ -1,0 +1,142 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+.page-container h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.page-description {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mentorship-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.mentorship-card:last-child {
+  margin-bottom: 0;
+}
+
+.mentorship-card p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.mentorship-card strong {
+  color: var(--text-main);
+}
+
+.mentorship-card button {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.page-container .card:first-of-type {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, var(--bg-card) 100%);
+  border-color: var(--primary);
+}
+
+.mentor-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.mentor-card:last-child {
+  margin-bottom: 0;
+}
+
+.mentor-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.mentor-card h4 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 1.2rem;
+}
+
+.mentor-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.mentor-card strong {
+  color: var(--text-main);
+}
+
+.mentor-card button {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  width: 160px;
+  font-weight: 500;
+  color: var(--text-main);
+  flex-shrink: 0;
+}
+
+.form-group select, .form-group input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+.form-group select:focus, .form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  .form-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form-group label {
+    width: auto;
+    margin-bottom: 0.5rem;
+  }
+  .mentor-card button, .mentorship-card button {
+    width: 100%;
+  }
+}
