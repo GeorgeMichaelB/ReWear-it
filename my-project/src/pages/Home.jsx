@@ -31,111 +31,158 @@ const Home = ({ addToSwaps }) => {
     ? items.filter(item => item.category_id === selectedCategory)
     : items;
 
-  if (loading) return <div className="loading">Loading...</div>;
+  if (loading) return <div className="loading" style={{ padding: 'var(--space-xl)', textAlign: 'center' }}>Reviving quality fashion...</div>;
 
   return (
     <div className="home-page">
-      <section className="hero">
-        <h1>Welcome to ReWear-it</h1>
-        <p>Sustainable fashion through swapping and recycling</p>
-        <a href="/products" className="btn btn-primary">Browse Items</a>
+      {/* Hero Section - Modernized from Slider.js */}
+      <section className="hero-modern card-premium" style={{ 
+        background: 'linear-gradient(rgba(27, 67, 50, 0.8), rgba(27, 67, 50, 0.8)), url("/assets/pages/img/layers/slider-1.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        padding: 'var(--space-xl) var(--space-md)',
+        color: 'white',
+        borderRadius: 'var(--radius-lg)',
+        marginBottom: 'var(--space-xl)',
+        textAlign: 'center'
+      }}>
+        <h1 style={{ color: 'white', fontSize: '3.5rem', marginBottom: 'var(--space-sm)' }}>Revive. Swap. ReWear.</h1>
+        <p style={{ fontSize: '1.25rem', color: 'var(--color-accent)', marginBottom: 'var(--space-lg)', maxWidth: '800px', margin: '0 auto var(--space-lg)' }}>
+          Join the circular fashion movement. Swap high-quality pre-loved pieces and reduce your environmental impact.
+        </p>
+        <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center' }}>
+          <a href="/products" className="btn-premium">Explore Collection</a>
+          <a href="/register" className="btn-premium" style={{ backgroundColor: 'transparent', border: '1px solid white' }}>Start Swapping</a>
+        </div>
       </section>
 
-      <section className="categories-section">
-        <h2>Categories</h2>
-        <div className="categories-grid">
+      {/* Categories Horizontal Scroll */}
+      <section className="categories-section" style={{ marginBottom: 'var(--space-xl)' }}>
+        <h2 style={{ marginBottom: 'var(--space-md)' }}>Curated Categories</h2>
+        <div className="categories-grid" style={{ 
+          display: 'flex', 
+          gap: 'var(--space-sm)', 
+          overflowX: 'auto', 
+          paddingBottom: 'var(--space-sm)',
+          scrollbarWidth: 'none'
+        }}>
           <div 
-            key="all" 
-            className={`category-card ${!selectedCategory ? 'active' : ''}`}
+            className={`category-pill ${!selectedCategory ? 'active' : ''}`}
             onClick={() => setSelectedCategory(null)}
+            style={{ 
+              padding: '0.5rem 1.5rem', 
+              borderRadius: 'var(--radius-full)', 
+              background: !selectedCategory ? 'var(--color-primary)' : 'var(--color-white)',
+              color: !selectedCategory ? 'white' : 'var(--color-text-main)',
+              border: '1px solid var(--color-border)',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap'
+            }}
           >
-            <h3>All Items</h3>
+            All Pieces
           </div>
           {categories.map((cat) => (
             <div 
               key={cat.id} 
-              className={`category-card ${selectedCategory === cat.id ? 'active' : ''}`}
+              className={`category-pill ${selectedCategory === cat.id ? 'active' : ''}`}
               onClick={() => setSelectedCategory(cat.id)}
+              style={{ 
+                padding: '0.5rem 1.5rem', 
+                borderRadius: 'var(--radius-full)', 
+                background: selectedCategory === cat.id ? 'var(--color-primary)' : 'var(--color-white)',
+                color: selectedCategory === cat.id ? 'white' : 'var(--color-text-main)',
+                border: '1px solid var(--color-border)',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
+              }}
             >
-              <h3>{cat.name}</h3>
+              {cat.name}
             </div>
           ))}
         </div>
       </section>
 
+      {/* Featured Items Grid - Modernized from HomeContent.js */}
       <section className="featured-items">
-        <h2>{selectedCategory ? 'Items in Category' : 'Featured Items'}</h2>
-        <div className="items-grid">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 'var(--space-lg)' }}>
+          <div>
+            <h2 style={{ fontSize: '2rem' }}>{selectedCategory ? 'DISCOVER SWAPS' : 'NEW ARRIVALS'}</h2>
+            <p style={{ color: 'var(--color-text-muted)' }}>Sustainable fashion ready for a new chapter.</p>
+          </div>
+          <a href="/products" style={{ fontWeight: 500, color: 'var(--color-secondary)', borderBottom: '2px solid var(--color-secondary)' }}>View All</a>
+        </div>
+
+        <div className="items-grid" style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
+          gap: 'var(--space-lg)' 
+        }}>
           {filteredItems.slice(0, 12).map((item) => (
-            <div key={item.id} className="item-card">
-<div className="item-image">
-  <img src={`https://picsum.photos/seed/${item.id}/400/500`} alt={item.title} />
-</div>
-              <div className="item-info">
-                <h3>{item.title}</h3>
-                <p className="price">${item.price}</p>
+            <div key={item.id} className="card-premium" style={{ position: 'relative' }}>
+              <div style={{ 
+                height: '350px', 
+                overflow: 'hidden', 
+                borderRadius: 'var(--radius-sm)',
+                marginBottom: 'var(--space-sm)',
+                backgroundColor: '#f0f0f0'
+              }}>
+                <img 
+                  src={`https://picsum.photos/seed/${item.id}/400/500`} 
+                  alt={item.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              
+              <div style={{ padding: 'var(--space-xs)' }}>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '4px' }}>{item.title}</h3>
                 {item.carbon_savings > 0 && (
-                  <span className="carbon-badge">🌱 {item.carbon_savings}kg CO₂ saved</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--color-secondary)', fontWeight: 600, display: 'block', marginBottom: 'var(--space-xs)' }}>
+                    🌱 Saved {item.carbon_savings}kg CO₂
+                  </span>
                 )}
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => addToSwaps(item)}
-                >
-                  Add to Swap
-                </button>
+                
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'var(--space-sm)' }}>
+                  <div>
+                    <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--color-text-muted)', display: 'block' }}>Swap Value</span>
+                    <span style={{ color: 'var(--color-primary)', fontWeight: 700 }}>${item.price}</span>
+                  </div>
+                  <button 
+                    className="btn-premium" 
+                    style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
+                    onClick={() => addToSwaps(item)}
+                  >
+                    Add to Swap
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
-    </div>
-  );
 
-
-  if (loading) return <div className="loading">Loading...</div>;
-
-  return (
-    <div className="home-page">
-      <section className="hero">
-        <h1>Welcome to ReWear-it</h1>
-        <p>Sustainable fashion through swapping and recycling</p>
-        <a href="/products" className="btn btn-primary">Browse Items</a>
-      </section>
-
-      <section className="categories-section">
-        <h2>Categories</h2>
-        <div className="categories-grid">
-          {categories.map((cat) => (
-            <div key={cat.id} className="category-card">
-              <h3>{cat.name}</h3>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="featured-items">
-        <h2>Featured Items</h2>
-        <div className="items-grid">
-          {items.slice(0, 6).map((item) => (
-            <div key={item.id} className="item-card">
-<div className="item-image">
-  <img src={`https://picsum.photos/seed/${item.id}/400/500`} alt={item.title} />
-</div>
-              <div className="item-info">
-                <h3>{item.title}</h3>
-                <p className="price">${item.price}</p>
-                {item.carbon_savings > 0 && (
-                  <span className="carbon-badge">🌱 {item.carbon_savings}kg CO₂ saved</span>
-                )}
-<button
-  className="btn btn-secondary"
-  onClick={() => addToSwaps(item)}
->
-  Add to Swap
-</button>
-              </div>
-            </div>
-          ))}
+      {/* Trust & Impact Stats */}
+      <section style={{ 
+        marginTop: 'var(--space-xl)', 
+        padding: 'var(--space-xl)', 
+        backgroundColor: 'var(--color-primary)', 
+        color: 'white',
+        borderRadius: 'var(--radius-lg)',
+        textAlign: 'center'
+      }}>
+        <h2 style={{ color: 'white', marginBottom: 'var(--space-md)' }}>Why ReWear-it?</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-xl)', flexWrap: 'wrap' }}>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 700 }}>100%</div>
+            <p style={{ color: 'var(--color-accent)' }}>Circular</p>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 700 }}>500+</div>
+            <p style={{ color: 'var(--color-accent)' }}>Curated Items</p>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 700 }}>12k</div>
+            <p style={{ color: 'var(--color-accent)' }}>CO₂ Saved (kg)</p>
+          </div>
         </div>
       </section>
     </div>

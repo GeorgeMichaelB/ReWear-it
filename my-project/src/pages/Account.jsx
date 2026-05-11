@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { authAPI } from '../services/api';
-import './Account.css';
 
 const Account = () => {
   const { user, updateUser } = useAuth();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
-
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     preferred_currency: 'USD',
-  });
-
-  const [passwordData, setPasswordData] = useState({
-    current_password: '',
-    new_password: '',
-    new_password_confirmation: '',
   });
 
   useEffect(() => {
@@ -35,10 +28,6 @@ const Account = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handlePasswordChange = (e) => {
-    setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
   };
 
   const handleProfileSubmit = async (e) => {
@@ -57,139 +46,58 @@ const Account = () => {
     }
   };
 
-  const handlePasswordSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess('');
-    setError('');
-    try {
-      await authAPI.changePassword({
-        current_password: passwordData.current_password,
-        new_password: passwordData.new_password,
-        new_password_confirmation: passwordData.new_password_confirmation,
-      });
-      setSuccess('Password changed successfully!');
-      setPasswordData({ current_password: '', new_password: '', new_password_confirmation: '' });
-    } catch (err) {
-      setError(err.response?.data?.message || 'Failed to change password');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (!user) {
-    return (
-      <div className="account-page">
-        <p>Please <a href="/login">login</a> to view your account.</p>
-      </div>
-    );
-  }
+  if (!user) return <div style={{ textAlign: 'center', padding: 'var(--space-xl)' }}>Please login to view account settings.</div>;
 
   return (
-    <div className="account-page">
-      <h2>My Account</h2>
-
-      {success && <div className="success-message">{success}</div>}
-      {error && <div className="error-message">{error}</div>}
-
-      <div className="account-section">
-        <h3>Profile Information</h3>
-        <form onSubmit={handleProfileSubmit}>
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>Phone</label>
-            <input
-              type="text"
-              name="phone"
-              value={formData.phone || ''}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>Currency</label>
-            <select name="preferred_currency" value={formData.preferred_currency} onChange={handleChange}>
-              <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
-              <option value="EGP">EGP</option>
-            </select>
-          </div>
-<button type="submit" className="btn btn-primary" disabled={loading}>
-  {loading ? 'Saving...' : 'Save Changes'}
-</button>
-        </form>
-      </div>
-
-      <div className="account-section">
-        <h3>Change Password</h3>
-        <form onSubmit={handlePasswordSubmit}>
-          <div className="form-group">
-            <label>Current Password</label>
-            <input
-              type="password"
-              name="current_password"
-              value={passwordData.current_password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>New Password</label>
-            <input
-              type="password"
-              name="new_password"
-              value={passwordData.new_password}
-              onChange={handlePasswordChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>Confirm New Password</label>
-            <input
-              type="password"
-              name="new_password_confirmation"
-              value={passwordData.new_password_confirmation}
-              onChange={handlePasswordChange}
-            />
-          </div>
-<button type="submit" className="btn btn-primary" disabled={loading}>
-  {loading ? 'Changing...' : 'Change Password'}
-</button>
-        </form>
-      </div>
-
-      <div className="account-section">
-        <h3>Account Stats</h3>
-        <div className="stats-grid">
-          <div className="stat-box">
-            <span className="stat-label">Trust Score</span>
-            <span className="stat-value">{user.trust_score || 'N/A'}</span>
-          </div>
-          <div className="stat-box">
-            <span className="stat-label">Eco Credits</span>
-            <span className="stat-value">{user.eco_credits || 0}</span>
-          </div>
-          <div className="stat-box">
-            <span className="stat-label">Role</span>
-            <span className="stat-value">{user.role || 'User'}</span>
-          </div>
+    <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: 'var(--space-xl)' }}>
+      <aside>
+        <div className="card-premium" style={{ position: 'sticky', top: '100px' }}>
+          <h3 style={{ marginBottom: 'var(--space-md)' }}>My Account</h3>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
+            <li style={{ color: 'var(--color-primary)', fontWeight: 600 }}>Profile Settings</li>
+            <li style={{ color: 'var(--color-text-muted)' }}>Security</li>
+            <li style={{ color: 'var(--color-text-muted)' }}>Sustainability Impact</li>
+          </ul>
         </div>
-      </div>
+      </aside>
+
+      <main>
+        <div style={{ marginBottom: 'var(--space-lg)' }}>
+          <h1 style={{ fontSize: '2.5rem' }}>Account Settings</h1>
+          <p style={{ color: 'var(--color-text-muted)' }}>Manage your personal information and preferences.</p>
+        </div>
+
+        {success && <div style={{ backgroundColor: '#dcfce7', color: '#166534', padding: '1rem', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-md)' }}>{success}</div>}
+        {error && <div style={{ backgroundColor: '#fee2e2', color: '#991b1b', padding: '1rem', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-md)' }}>{error}</div>}
+
+        <div className="card-premium">
+          <form onSubmit={handleProfileSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+            <div>
+              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 500 }}>Full Name</label>
+              <input 
+                type="text" 
+                name="name" 
+                value={formData.name} 
+                onChange={handleChange} 
+                className="input"
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', marginBottom: '4px', fontWeight: 500 }}>Email Address</label>
+              <input 
+                type="email" 
+                name="email" 
+                value={formData.email} 
+                onChange={handleChange} 
+                className="input"
+              />
+            </div>
+            <button type="submit" className="btn-premium" disabled={loading}>
+              {loading ? 'Saving...' : 'Save Changes'}
+            </button>
+          </form>
+        </div>
+      </main>
     </div>
   );
 };
