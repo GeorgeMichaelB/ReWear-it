@@ -93,7 +93,7 @@ function StyleBoards() {
       {showCreateForm && (
         <div className="card">
           <h3>Create New Style Board</h3>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Name: </label>
             <input
               type="text"
@@ -102,7 +102,7 @@ function StyleBoards() {
               placeholder="My Summer Collection"
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Description: </label>
             <textarea
               value={newBoard.description}
@@ -110,7 +110,7 @@ function StyleBoards() {
               placeholder="Describe your style board..."
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>
               <input
                 type="checkbox"

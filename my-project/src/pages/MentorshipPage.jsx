@@ -112,7 +112,7 @@ function MentorshipPage() {
       {showRequestForm && (
         <div className="card">
           <h3>Find Your Mentor</h3>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Skill Interest: </label>
             <select
               value={requestData.skill_interest}
@@ -125,7 +125,7 @@ function MentorshipPage() {
               <option value="refashion">Refashion</option>
             </select>
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Experience Level: </label>
             <select
               value={requestData.experience_level}
@@ -143,7 +143,7 @@ function MentorshipPage() {
       {showApplyForm && (
         <div className="card">
           <h3>Apply to be a Mentor</h3>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Years of Experience: </label>
             <input
               type="number"

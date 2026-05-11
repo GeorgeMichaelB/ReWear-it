@@ -27,7 +27,7 @@ const Login = () => {
         <h2>Login to ReWear-it</h2>
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Email</label>
             <input
               type="email"
@@ -36,7 +36,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Password</label>
             <input
               type="password"

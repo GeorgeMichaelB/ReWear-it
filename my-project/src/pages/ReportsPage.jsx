@@ -93,7 +93,7 @@ function ReportsPage() {
       {showCreateForm && (
         <div className="card">
           <h3>Submit New Report</h3>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Report Type: </label>
             <select
               value={newReport.report_type}
@@ -106,7 +106,7 @@ function ReportsPage() {
               <option value="other">Other</option>
             </select>
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Target Type: </label>
             <select
               value={newReport.target_type}
@@ -118,7 +118,7 @@ function ReportsPage() {
               <option value="message">Message</option>
             </select>
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Target ID: </label>
             <input
               type="text"
@@ -127,7 +127,7 @@ function ReportsPage() {
               placeholder="Enter ID"
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Description: </label>
             <textarea
               value={newReport.description}

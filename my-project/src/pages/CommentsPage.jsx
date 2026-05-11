@@ -108,7 +108,7 @@ function CommentsPage() {
 
       <div className="card">
         <h3>Add a Comment</h3>
-        <div className="form-group">
+         <div className="form-group-base">
           <textarea
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}

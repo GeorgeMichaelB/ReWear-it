@@ -33,7 +33,7 @@ const ShippingCalculator = () => {
       <h2>🚚 Shipping Calculator</h2>
       
       <form onSubmit={calculateShipping} className="shipping-form">
-        <div className="form-group">
+         <div className="form-group-base">
           <label>From Postal Code</label>
           <input
             type="text"
@@ -45,7 +45,7 @@ const ShippingCalculator = () => {
           />
         </div>
         
-        <div className="form-group">
+         <div className="form-group-base">
           <label>To Postal Code</label>
           <input
             type="text"
@@ -57,7 +57,7 @@ const ShippingCalculator = () => {
           />
         </div>
         
-        <div className="form-group">
+         <div className="form-group-base">
           <label>Package Weight (kg)</label>
           <input
             type="number"

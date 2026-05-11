@@ -104,7 +104,7 @@ const DigitalCloset = () => {
           <div className="modal-content">
             <h3>Add Item to Closet</h3>
             <form onSubmit={handleAddSubmit}>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Title *</label>
                 <input
                   type="text"
@@ -113,14 +113,14 @@ const DigitalCloset = () => {
                   required
                 />
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Description</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 />
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Condition</label>
                 <select value={formData.condition} onChange={(e) => setFormData({ ...formData, condition: e.target.value })}>
                   <option value="new">New</option>
@@ -130,7 +130,7 @@ const DigitalCloset = () => {
                   <option value="worn">Worn</option>
                 </select>
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Size</label>
                 <input
                   type="text"
@@ -139,7 +139,7 @@ const DigitalCloset = () => {
                   placeholder="e.g., S, M, L, 32"
                 />
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Material</label>
                 <select value={formData.material} onChange={(e) => setFormData({ ...formData, material: e.target.value })}>
                   <option value="">Select material</option>

@@ -187,19 +187,19 @@ const MyItems = () => {
           <div className="modal-content">
             <h3>{editingItem ? 'Edit Item' : 'Add New Item'}</h3>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Title</label>
                 <input type="text" name="title" value={formData.title} onChange={handleChange} required />
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Description</label>
                 <textarea name="description" value={formData.description} onChange={handleChange} />
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Price ($)</label>
                 <input type="number" name="price" value={formData.price} onChange={handleChange} required />
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Category</label>
                 <select name="category_id" value={formData.category_id} onChange={handleChange}>
                   <option value="">Select category</option>
@@ -208,7 +208,7 @@ const MyItems = () => {
                   ))}
                 </select>
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Condition</label>
                 <select name="condition" value={formData.condition} onChange={handleChange}>
                   <option value="new">New</option>
@@ -217,7 +217,7 @@ const MyItems = () => {
                   <option value="fair">Fair</option>
                 </select>
               </div>
-              <div className="form-group">
+               <div className="form-group-base">
                 <label>Carbon Savings (kg)</label>
                 <input type="number" name="carbon_savings" value={formData.carbon_savings} onChange={handleChange} step="0.1" />
               </div>

@@ -125,7 +125,7 @@ function DropNotifications() {
         </div>
 
         {showCreateDrop && (
-          <div className="form-group" style={{ marginTop: '1rem' }}>
+           <div className="form-group-base" style={{ marginTop: '1rem' }}>
             <label>Drop Title: </label>
             <input
               type="text"

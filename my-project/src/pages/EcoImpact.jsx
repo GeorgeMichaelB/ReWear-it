@@ -30,7 +30,7 @@ const EcoImpact = () => {
       <p className="page-desc">Calculate your environmental savings from swapping vs buying new</p>
 
       <form onSubmit={calculateImpact} className="impact-form">
-        <div className="form-group">
+         <div className="form-group-base">
           <label>Material Type</label>
           <select value={formData.material_type} onChange={(e) => setFormData({ ...formData, material_type: e.target.value })}>
             <option value="cotton">Cotton</option>
@@ -42,7 +42,7 @@ const EcoImpact = () => {
           </select>
         </div>
         
-        <div className="form-group">
+         <div className="form-group-base">
           <label>Weight (kg)</label>
           <input
             type="number"
@@ -53,7 +53,7 @@ const EcoImpact = () => {
           />
         </div>
 
-        <div className="form-group">
+         <div className="form-group-base">
           <label>Original Condition</label>
           <select value={formData.original_condition} onChange={(e) => setFormData({ ...formData, original_condition: e.target.value })}>
             <option value="new">Like New</option>

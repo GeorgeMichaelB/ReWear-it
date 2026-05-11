@@ -70,7 +70,7 @@ function NearbySwaps() {
 
       <div className="card">
         <h3>Your Location</h3>
-        <div className="form-group">
+         <div className="form-group-base">
           <label>Latitude: </label>
           <input
             type="number"
@@ -79,7 +79,7 @@ function NearbySwaps() {
             onChange={(e) => setUserLocation({ ...userLocation, latitude: parseFloat(e.target.value) })}
           />
         </div>
-        <div className="form-group">
+         <div className="form-group-base">
           <label>Longitude: </label>
           <input
             type="number"
@@ -88,7 +88,7 @@ function NearbySwaps() {
             onChange={(e) => setUserLocation({ ...userLocation, longitude: parseFloat(e.target.value) })}
           />
         </div>
-        <div className="form-group">
+         <div className="form-group-base">
           <label>Search Radius (km): </label>
           <input
             type="number"

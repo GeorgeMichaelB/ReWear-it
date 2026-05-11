@@ -92,7 +92,7 @@ function DisputeCenter() {
       {showCreateForm && (
         <div className="card">
           <h3>Create New Dispute</h3>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Order ID: </label>
             <input
               type="text"
@@ -100,7 +100,7 @@ function DisputeCenter() {
               onChange={(e) => setNewDispute({ ...newDispute, order_id: e.target.value })}
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Dispute Type: </label>
             <select
               value={newDispute.dispute_type}
@@ -112,7 +112,7 @@ function DisputeCenter() {
               <option value="other">Other</option>
             </select>
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Description: </label>
             <textarea
               value={newDispute.description}

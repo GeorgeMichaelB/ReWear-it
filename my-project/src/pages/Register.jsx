@@ -37,7 +37,7 @@ const Register = () => {
         <h2>Register for ReWear-it</h2>
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Name</label>
             <input
               type="text"
@@ -47,7 +47,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Email</label>
             <input
               type="email"
@@ -57,14 +57,14 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Role</label>
             <select name="role" value={formData.role} onChange={handleChange}>
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
             </select>
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Password</label>
             <input
               type="password"
@@ -74,7 +74,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group">
+           <div className="form-group-base">
             <label>Confirm Password</label>
             <input
               type="password"
