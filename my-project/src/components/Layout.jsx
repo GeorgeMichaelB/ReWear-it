@@ -36,13 +36,18 @@ const Layout = ({ children, swaps, removeFromSwaps }) => {
     "Account": [
       { name: "My Account", path: "/account" },
       { name: "Analytics", path: "/analytics" },
-      { name: "Seller Stats", path: "/seller-analytics" },
+      { name: "Seller Stats", path: "/seller-analytics", roles: ['seller', 'admin'] },
       { name: "Mentorship", path: "/mentorship" },
     ],
     "Support": [
       { name: "Dispute Center", path: "/dispute-center" },
       { name: "Escrow Vault", path: "/escrow-vault" },
       { name: "Newsletter", path: "/newsletter" },
+    ],
+    "Administration": [
+      { name: "Admin Dashboard", path: "/admin", roles: ['admin', 'super_admin', 'moderator'] },
+      { name: "User Reports", path: "/reports", roles: ['admin', 'super_admin', 'moderator'] },
+      { name: "DB Cleanup", path: "/cleanup", roles: ['super_admin'] },
     ]
   };
 
@@ -66,22 +71,31 @@ const Layout = ({ children, swaps, removeFromSwaps }) => {
             </span>
           </button>
 
-          <nav className={`main-nav ${mobileMenuOpen ? 'mobile-open' : ''}`}>
-            <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-            
-            {user && Object.entries(navGroups).map(([groupName, links]) => (
-              <div className="nav-dropdown" key={groupName}>
-                <span className="dropdown-trigger">{groupName}</span>
-                <div className="dropdown-menu">
-                  {links.map(link => (
-                    <Link key={link.path} to={link.path} onClick={() => setMobileMenuOpen(false)}>
-                      {link.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </nav>
+            <nav className={`main-nav ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+              {user && <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>}
+              
+              {Object.entries(navGroups).map(([groupName, links]) => {
+                const visibleLinks = links.filter(link => !link.roles || (user && link.roles.includes(user.role)));
+                if (visibleLinks.length === 0) return null;
+
+                return (
+                  <div className="nav-dropdown" key={groupName}>
+                    <span className="dropdown-trigger">{groupName}</span>
+                    <div className="dropdown-menu">
+                      {visibleLinks.map(link => (
+                        <Link 
+                          key={link.path} 
+                          to={user ? link.path : '/login'} 
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </nav>
 
           <div className="header-right">
             <div className="swap-basket">

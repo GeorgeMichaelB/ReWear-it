@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Login from './pages/Login';
@@ -56,33 +57,36 @@ function App() {
             <Route path="/products" element={<Products addToSwaps={addToSwaps} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/my-items" element={<MyItems />} />
-            <Route path="/basket" element={<SwapBasket swaps={swaps} removeFromSwaps={removeFromSwaps} />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/eco-credits" element={<EcoCredits />} />
-            <Route path="/trust-score" element={<TrustScore />} />
-            <Route path="/activity-log" element={<ActivityLog />} />
-            <Route path="/shipping" element={<ShippingCalculator />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/swap-history" element={<SwapHistory />} />
-            <Route path="/bundle-discount" element={<BundleDiscount />} />
-            <Route path="/digital-closet" element={<DigitalCloset />} />
-            <Route path="/eco-impact" element={<EcoImpact />} />
-            <Route path="/swap-proposal" element={<SwapProposal />} />
-            <Route path="/nearby-swaps" element={<NearbySwaps />} />
-            <Route path="/escrow-vault" element={<EscrowVault />} />
-            <Route path="/dispute-center" element={<DisputeCenter />} />
-            <Route path="/style-boards" element={<StyleBoards />} />
-            <Route path="/drops" element={<DropNotifications />} />
-            <Route path="/seller-analytics" element={<SellerAnalytics />} />
-            <Route path="/comments" element={<CommentsPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
-            <Route path="/mentorship" element={<MentorshipPage />} />
-            <Route path="/trends" element={<MarketTrendsPage />} />
-            <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
-            <Route path="/cleanup" element={<DatabaseCleanupPage />} />
+            
+            <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+            <Route path="/my-items" element={<ProtectedRoute><MyItems /></ProtectedRoute>} />
+            <Route path="/basket" element={<ProtectedRoute><SwapBasket swaps={swaps} removeFromSwaps={removeFromSwaps} /></ProtectedRoute>} />
+            <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+            <Route path="/eco-credits" element={<ProtectedRoute><EcoCredits /></ProtectedRoute>} />
+            <Route path="/trust-score" element={<ProtectedRoute><TrustScore /></ProtectedRoute>} />
+            <Route path="/activity-log" element={<ProtectedRoute><ActivityLog /></ProtectedRoute>} />
+            <Route path="/shipping" element={<ProtectedRoute><ShippingCalculator /></ProtectedRoute>} />
+            <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
+            <Route path="/swap-history" element={<ProtectedRoute><SwapHistory /></ProtectedRoute>} />
+            <Route path="/bundle-discount" element={<ProtectedRoute><BundleDiscount /></ProtectedRoute>} />
+            <Route path="/digital-closet" element={<ProtectedRoute><DigitalCloset /></ProtectedRoute>} />
+            <Route path="/eco-impact" element={<ProtectedRoute><EcoImpact /></ProtectedRoute>} />
+            <Route path="/swap-proposal" element={<ProtectedRoute><SwapProposal /></ProtectedRoute>} />
+            <Route path="/nearby-swaps" element={<ProtectedRoute><NearbySwaps /></ProtectedRoute>} />
+            <Route path="/escrow-vault" element={<ProtectedRoute><EscrowVault /></ProtectedRoute>} />
+            <Route path="/dispute-center" element={<ProtectedRoute><DisputeCenter /></ProtectedRoute>} />
+            <Route path="/style-boards" element={<ProtectedRoute><StyleBoards /></ProtectedRoute>} />
+            <Route path="/drops" element={<ProtectedRoute><DropNotifications /></ProtectedRoute>} />
+            <Route path="/comments" element={<ProtectedRoute><CommentsPage /></ProtectedRoute>} />
+            <Route path="/mentorship" element={<ProtectedRoute><MentorshipPage /></ProtectedRoute>} />
+            <Route path="/trends" element={<ProtectedRoute><MarketTrendsPage /></ProtectedRoute>} />
+
+            <Route path="/seller-analytics" element={<ProtectedRoute allowedRoles={['seller', 'admin']}><SellerAnalytics /></ProtectedRoute>} />
+            
+            <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin', 'super_admin', 'moderator']}><AdminDashboard /></ProtectedRoute>} />
+            <Route path="/reports" element={<ProtectedRoute allowedRoles={['admin', 'super_admin', 'moderator']}><ReportsPage /></ProtectedRoute>} />
+            <Route path="/cleanup" element={<ProtectedRoute allowedRoles={['super_admin']}><DatabaseCleanupPage /></ProtectedRoute>} />
           </Routes>
         </Layout>
       </BrowserRouter>

@@ -95,7 +95,7 @@ const Account = () => {
       <div className="account-section">
         <h3>Profile Information</h3>
         <form onSubmit={handleProfileSubmit}>
-          <div className="form-group">
+          <div className="form-group-base">
             <label>Name</label>
             <input
               type="text"
@@ -104,7 +104,7 @@ const Account = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-base">
             <label>Email</label>
             <input
               type="email"
@@ -113,7 +113,7 @@ const Account = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-base">
             <label>Phone</label>
             <input
               type="text"
@@ -122,7 +122,7 @@ const Account = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-base">
             <label>Currency</label>
             <select name="preferred_currency" value={formData.preferred_currency} onChange={handleChange}>
               <option value="USD">USD</option>
@@ -140,7 +140,7 @@ const Account = () => {
       <div className="account-section">
         <h3>Change Password</h3>
         <form onSubmit={handlePasswordSubmit}>
-          <div className="form-group">
+          <div className="form-group-base">
             <label>Current Password</label>
             <input
               type="password"
@@ -149,7 +149,7 @@ const Account = () => {
               onChange={handlePasswordChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-base">
             <label>New Password</label>
             <input
               type="password"
@@ -158,7 +158,7 @@ const Account = () => {
               onChange={handlePasswordChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-base">
             <label>Confirm New Password</label>
             <input
               type="password"

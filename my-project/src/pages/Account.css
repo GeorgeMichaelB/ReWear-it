@@ -58,22 +58,23 @@
   gap: 1.25rem;
 }
 
-.form-group {
+.form-group-base {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: row; 
   gap: 1rem;
+  align-items: flex-start;
 }
 
-.form-group label {
+.form-group-base label {
   width: 150px;
   flex-shrink: 0;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-main);
+  text-align:left;
 }
 
-.form-group input, .form-group select {
+.form-group-base input, .form-group-base select {
   flex: 1;
   box-sizing: border-box;
   padding: 0.6rem 1rem;
