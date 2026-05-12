@@ -82,15 +82,18 @@ const Layout = ({ children, swaps, removeFromSwaps }) => {
                   <div className="nav-dropdown" key={groupName}>
                     <span className="dropdown-trigger">{groupName}</span>
                     <div className="dropdown-menu">
-                      {visibleLinks.map(link => (
-                        <Link 
-                          key={link.path} 
-                          to={user ? link.path : '/login'} 
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {link.name}
-                        </Link>
-                      ))}
+                      {visibleLinks.map(link => {
+                        const isExplore = groupName === "Explore";
+                        return (
+                          <Link 
+                            key={link.path} 
+                            to={(user || isExplore) ? link.path : '/login'} 
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {link.name}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 );
