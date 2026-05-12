@@ -61,6 +61,24 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
+            <Route path="/basket" element={<SwapBasket swaps={swaps} removeFromSwaps={removeFromSwaps} />} />
+
+            <Route path="/my-items" element={<ProtectedRoute><MyItems /></ProtectedRoute>} />
+            <Route path="/digital-closet" element={<ProtectedRoute><DigitalCloset /></ProtectedRoute>} />
+            <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+            <Route path="/swap-history" element={<ProtectedRoute><SwapHistory /></ProtectedRoute>} />
+
+            <Route path="/eco-impact" element={<ProtectedRoute><EcoImpact /></ProtectedRoute>} />
+            <Route path="/eco-credits" element={<ProtectedRoute><EcoCredits /></ProtectedRoute>} />
+            <Route path="/trust-score" element={<ProtectedRoute><TrustScore /></ProtectedRoute>} />
+            <Route path="/shipping" element={<ProtectedRoute><ShippingCalculator /></ProtectedRoute>} />
+
+            <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+            <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
+            <Route path="/mentorship" element={<ProtectedRoute><MentorshipPage /></ProtectedRoute>} />
+
+            <Route path="/dispute-center" element={<ProtectedRoute><DisputeCenter /></ProtectedRoute>} />
+            <Route path="/escrow-vault" element={<ProtectedRoute><EscrowVault /></ProtectedRoute>} />
 
             <Route path="/seller-analytics" element={<ProtectedRoute allowedRoles={['seller', 'admin']}><SellerAnalytics /></ProtectedRoute>} />
             
